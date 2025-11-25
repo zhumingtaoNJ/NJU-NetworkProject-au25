@@ -14,8 +14,8 @@ import java.util.Scanner;
  */
 public class HttpClient {
 
-    private static final String HOST = "localhost";  // 服务器主机，默认本地测试
-    private static final int PORT = 8080;  // 服务器端口，从HttpServer.java中获取
+    private static final String HOST = "localhost";  // 服务器主机，默认本地
+    private static final int PORT = 8080;  // 服务器端口
     private static final int MAX_REDIRECTS = 5;  // 最大重定向次数，防止无限循环
 
     public static void main(String[] args) {
@@ -142,7 +142,6 @@ public class HttpClient {
             return sendRequest(socket, method, newUrl.getPath(), body, extraHeaders, redirectCount + 1);
         } else if (response.statusCode == 304) {
             System.out.println("资源未修改 (304 Not Modified)");
-            // 可以添加缓存逻辑，但简单实现只需输出
         }
 
         return response;
